@@ -1,9 +1,12 @@
 package com.example.wangqiang.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -11,6 +14,22 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView startTextView = (TextView)findViewById(R.id.start);
+        startTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startService(new Intent(MainActivity.this, FloatViewService.class));
+
+            }
+        });
+        TextView stopTextView = (TextView)findViewById(R.id.stop);
+        stopTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.stopService(new Intent(MainActivity.this, FloatViewService.class));
+
+            }
+        });
     }
 
     @Override
