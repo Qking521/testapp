@@ -8,11 +8,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.wangqiang.nav.NavigationActivity;
+
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (true){
+            startActivity(new Intent(this, NavigationActivity.class));
+        }
         setContentView(R.layout.activity_main);
         TextView startTextView = (TextView)findViewById(R.id.start);
         startTextView.setOnClickListener(new View.OnClickListener() {
