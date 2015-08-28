@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.wangqiang.nav.NavigationActivity;
+import com.example.wangqiang.util.Utils;
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (true){
+        if (Utils.getNavigation(this)){
             startActivity(new Intent(this, NavigationActivity.class));
         }
         setContentView(R.layout.activity_main);
@@ -35,8 +36,13 @@ public class MainActivity extends Activity {
 
             }
         });
+
+
     }
 
+    public void startNavigation(View view){
+        startActivity(new Intent(this, NavigationActivity.class));
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

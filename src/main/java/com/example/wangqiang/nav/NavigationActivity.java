@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.example.wangqiang.app.MainActivity;
 import com.example.wangqiang.app.R;
+import com.example.wangqiang.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,7 @@ public class NavigationActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NavigationActivity.this, MainActivity.class));
+                Utils.setNavigation(NavigationActivity.this, false);
                 finish();
             }
         });

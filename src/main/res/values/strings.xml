@@ -6,4 +6,5 @@
     <string name="start_float_view">start</string>
     <string name="stop_float_view">stop</string>
     <string name="nav_start_button">click to go</string>
+    <string name="start_button">start navigation</string>
 </resources>
