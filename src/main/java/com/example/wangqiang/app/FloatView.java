@@ -1,9 +1,11 @@
 package com.example.wangqiang.app;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,6 +28,7 @@ public class FloatView extends ImageView{
 
     private Context mContext;
     private OnClickListener mClickListener;
+    private Toast mToast;
 
     public FloatView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -33,17 +36,29 @@ public class FloatView extends ImageView{
         mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
         initWindowManager();
         registerClickListener();
+        createCustomToast();
+    }
 
+    private void createCustomToast() {
+        Toast toast = new Toast(mContext);
+        toast.setView(LayoutInflater.from(mContext).inflate(R.layout.custom_toast_view, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
     }
 
     private void registerClickListener() {
         mClickListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
+                Bitmap b = screenShot();
+
             }
         };
         setOnClickListener(mClickListener);
+    }
+
+    private Bitmap screenShot() {
+
+        return null;
     }
 
     private void initWindowManager() {

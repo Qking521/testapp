@@ -2,6 +2,7 @@ package com.example.wangqiang.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 
 /**
@@ -20,6 +21,13 @@ public class Utils {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         return sp.getBoolean(SHARE_NAVIGATION, true);
     }
+
+    public static boolean isSDcardMounted(){
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+
+
 
 
 }
