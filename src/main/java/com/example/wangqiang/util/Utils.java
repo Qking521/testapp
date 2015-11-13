@@ -4,11 +4,20 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
+
+import com.example.wangqiang.app.DeviceInfoActivity;
+import com.example.wangqiang.app.MainActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by wangqiang on 2015/8/19.
  */
 public class Utils {
+
+
 
     public static final String SHARE_NAVIGATION = "share_navigation";
 
@@ -27,7 +36,7 @@ public class Utils {
     }
 
 
-
-
-
+    public static void showToast(Context context, String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+    }
 }

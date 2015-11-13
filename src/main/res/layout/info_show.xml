@@ -32,6 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@android:string/ok"
+        android:background="@drawable/vector"
         android:onClick="hideDeviceInfo"/>
 
 </RelativeLayout>

@@ -10,4 +10,11 @@
     <string name="btn_screen_shot">screen shot</string>
     <string name="btn_device_info">device info</string>
     <string name="btn_apps_info">apps info</string>
+    <string name="btn_file_manager">file manager</string>
+
+    <!-- main list string data -->
+    <string name="main_data_torch">Torch</string>
+    <string name="main_data_file_manager">File Manager</string>
+    <string name="main_data_app_manager">App Manager</string>
+    <string name="main_data_device_info">Device Info</string>
 </resources>

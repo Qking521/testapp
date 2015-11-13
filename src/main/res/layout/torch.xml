@@ -5,9 +5,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ListView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_listview"></ListView>
+        android:text="on"
+        android:id="@+id/torch_on"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="off"
+        android:id="@+id/torch_off"/>
 
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.wangqiang.app;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -9,6 +11,34 @@ public class AppInfo {
     private String packageName;
     private String appName;
     private Drawable icon;
+    private Intent intent;
+
+    boolean isSystemApp;
+    boolean isUninstallable;
+
+    public boolean isUninstallable() {
+        return isUninstallable;
+    }
+
+    public void setIsUninstallable(boolean isUninstallable) {
+        this.isUninstallable = isUninstallable;
+    }
+
+    public boolean isSystemApp() {
+        return isSystemApp;
+    }
+
+    public void setIsSystemApp(boolean isSystemApp) {
+        this.isSystemApp = isSystemApp;
+    }
+
+    public Intent getIntent() {
+        return intent;
+    }
+
+    public void setIntent(Intent intent) {
+        this.intent = intent;
+    }
 
     public String getPackageName() {
         return packageName;

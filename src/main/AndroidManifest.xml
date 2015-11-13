@@ -4,12 +4,23 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- torch -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.autofocus"/>
+
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -20,9 +31,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.wangqiang.nav.NavigationActivity">
-
+        <activity android:name="com.example.wangqiang.nav.NavigationActivity" />
+        <activity android:name="com.example.wangqiang.app.AppsManager" />
+        <activity android:name="com.example.wangqiang.app.FileManager" />
+        <activity android:name="com.example.wangqiang.app.TorchActivity"
+            android:configChanges="orientation|screenSize">
         </activity>
+        <activity android:name="com.example.wangqiang.app.DeviceInfoActivity" />
+        <activity android:name=".AppDetailActivity" />
+
 
         <service android:name=".FloatViewService" />
 

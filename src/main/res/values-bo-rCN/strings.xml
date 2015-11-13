@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- main list string data -->
+    <string name="main_data_torch">手电筒</string>
+    <string name="main_data_file_manager">文件管理</string>
+    <string name="main_data_app_manager">应用管理</string>
+    <string name="main_data_device_info">设备信息</string>
+</resources>
