@@ -37,9 +37,7 @@ public class MainActivity extends Activity {
         init();
         initViews();
         StorageManager manager = (StorageManager)getSystemService(Context.STORAGE_SERVICE);
-        Log.v("wq", "1111111111111111");
         try {
-            Log.v("wq", "000000000000000");
             Class<?>[] paramClasses = {};
             Method getVolumePaths = manager.getClass().getMethod("getVolumePaths", paramClasses);
             getVolumePaths.setAccessible(true);
