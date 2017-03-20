@@ -26,12 +26,14 @@ public class MainActivity extends Activity {
     ListView mMainListView;
     private static final int PRESS_INTERVAL = 3000;
     private static long BackPressedTime = 0;
+    public static String TAG = "wq";
 
     private String[] mKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v("TAG", "onCreate");
         setContentView(R.layout.activity_main);
 
         init();
