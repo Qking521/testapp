@@ -1,7 +1,6 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.activitys;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.wangqiang.app.R;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -6,12 +6,6 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.example.wangqiang.app.DeviceInfoActivity;
-import com.example.wangqiang.app.MainActivity;
-
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by wangqiang on 2015/8/19.
  */

@@ -1,4 +1,4 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.activitys;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.wangqiang.app.R;
 
 /**
  * Created by wangqiang on 2015/11/2.

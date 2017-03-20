@@ -1,4 +1,4 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

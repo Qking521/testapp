@@ -1,4 +1,4 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.custom;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.wangqiang.app.R;
 
 /**
  * Created by wangqiang on 2015/8/20.

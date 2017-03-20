@@ -1,9 +1,12 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.services;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.view.LayoutInflater;
+
+import com.example.wangqiang.custom.FloatView;
+import com.example.wangqiang.app.R;
 
 /**
  * Created by wangqiang on 2015/8/19.

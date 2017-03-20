@@ -1,4 +1,4 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.activitys;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.wangqiang.app.R;
 
 /**
  * Created by wangqiang on 2015/10/27.

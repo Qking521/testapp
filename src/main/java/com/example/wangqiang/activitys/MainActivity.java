@@ -1,4 +1,4 @@
-package com.example.wangqiang.app;
+package com.example.wangqiang.activitys;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.wangqiang.app.R;
 import com.example.wangqiang.util.Utils;
 
 import java.lang.reflect.InvocationTargetException;

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.wangqiang.app.MainActivity;
+import com.example.wangqiang.activitys.MainActivity;
 import com.example.wangqiang.app.R;
 import com.example.wangqiang.util.Utils;
 
@@ -97,7 +97,7 @@ public class NavigationActivity extends Activity {
         }
     };
 
-    class ViewPagerAdapder extends PagerAdapter{
+    class ViewPagerAdapder extends PagerAdapter {
         @Override
         public int getCount() {
             return PAGER_COUNT;
