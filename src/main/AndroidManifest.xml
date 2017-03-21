@@ -32,12 +32,12 @@
         </activity>
 
         <activity android:name="com.example.wangqiang.nav.NavigationActivity" />
-        <activity android:name="com.example.wangqiang.app.com.example.wangqiang.activitys.AppsManager" />
-        <activity android:name="com.example.wangqiang.app.com.example.wangqiang.activitys.FileManager" />
-        <activity android:name="com.example.wangqiang.app.com.example.wangqiang.activitys.TorchActivity"
+        <activity android:name="com.example.wangqiang.activitys.AppsManager" />
+        <activity android:name="com.example.wangqiang.activitys.FileManager" />
+        <activity android:name="com.example.wangqiang.activitys.TorchActivity"
             android:configChanges="orientation|screenSize">
         </activity>
-        <activity android:name="com.example.wangqiang.app.com.example.wangqiang.activitys.DeviceInfoActivity" />
+        <activity android:name="com.example.wangqiang.activitys.DeviceInfoActivity" />
         <activity android:name="com.example.wangqiang.activitys.AppDetailActivity" />
 
 

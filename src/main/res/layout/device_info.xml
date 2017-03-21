@@ -32,12 +32,6 @@
             android:layout_height="wrap_content"
             android:onClick="deviceInfo"
             android:text="@string/btn_device_info"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="zhangxinrun"
-            android:text="张馨润"/>
       
     </LinearLayout>
 

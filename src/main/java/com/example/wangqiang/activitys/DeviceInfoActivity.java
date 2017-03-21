@@ -1,12 +1,16 @@
 package com.example.wangqiang.activitys;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -25,6 +29,7 @@ import android.widget.TextView;
 import com.example.wangqiang.services.FloatViewService;
 import com.example.wangqiang.app.R;
 import com.example.wangqiang.nav.NavigationActivity;
+import com.example.wangqiang.util.PermissionCheck;
 import com.example.wangqiang.util.Utils;
 import com.mediatek.telephony.TelephonyManagerEx;
 
@@ -33,8 +38,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Manifest;
 
 public class DeviceInfoActivity extends Activity {
+
+
+
 
     private static final String ENTER = "\n";
     private static final int SIM_BUMBER_ONE = 1;
@@ -139,7 +148,16 @@ public class DeviceInfoActivity extends Activity {
     }
 
     public void deviceInfo(View view) {
+        if (!PermissionCheck.isPermissionGranted(this, android.Manifest.permission.READ_PHONE_STATE)){
+            PermissionCheck.requsetPermission(this,
+                    new String[]{android.Manifest.permission.READ_PHONE_STATE},
+                    PermissionCheck.PERMISSION_REQUSTCODE_MULTI_PERMISSION);
+        }else {
+            deviceInfo();
+        }
+    }
 
+    private void deviceInfo() {
         deviceInfoLayout.setVisibility(View.VISIBLE);
         StringBuilder sb = new StringBuilder();
         displayInfo(sb);
@@ -216,8 +234,17 @@ public class DeviceInfoActivity extends Activity {
         }catch (Exception e){
             Log.v("wq", "exception=" + e.getMessage());
         }
+    }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionCheck.onRequestPermissionResultCallback(requestCode, permissions, grantResults);
+        if (PermissionCheck.RESULT_REQUSTCODE_PHONE){
+            deviceInfo();
+        }else {
+            PermissionCheck.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_PHONE_STATE, getString(R.string.permission_rational_message));
+        }
     }
 
     private void buildInfo(StringBuilder sb) {
