@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
     }
 
     private void init() {
-        mMainListData.put(getString(R.string.main_data_torch), TorchActivity.class);
+        mMainListData.put(getString(R.string.main_data_torch), CameraActivity.class);
         mMainListData.put(getString(R.string.main_data_file_manager), FileManager.class);
         mMainListData.put(getString(R.string.main_data_app_manager), AppsManager.class);
         mMainListData.put(getString(R.string.main_data_device_info), DeviceInfoActivity.class);

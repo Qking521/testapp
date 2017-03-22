@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wangqiang.activitys.MainActivity">
+
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+
+    <Switch
+        android:id="@+id/camera_switch"
+        android:layout_below="@id/surface_view"
+        android:layout_centerHorizontal="true"
+        android:text="back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/torch_switch"
+        android:layout_below="@id/camera_switch"
+        android:layout_centerHorizontal="true"
+        android:text="off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

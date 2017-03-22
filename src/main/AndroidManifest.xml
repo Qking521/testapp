@@ -10,7 +10,7 @@
     <!-- torch -->
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera2" />
     <uses-feature android:name="android.hardware.autofocus"/>
 
 
@@ -34,7 +34,7 @@
         <activity android:name="com.example.wangqiang.nav.NavigationActivity" />
         <activity android:name="com.example.wangqiang.activitys.AppsManager" />
         <activity android:name="com.example.wangqiang.activitys.FileManager" />
-        <activity android:name="com.example.wangqiang.activitys.TorchActivity"
+        <activity android:name="com.example.wangqiang.activitys.CameraActivity"
             android:configChanges="orientation|screenSize">
         </activity>
         <activity android:name="com.example.wangqiang.activitys.DeviceInfoActivity" />

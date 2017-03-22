@@ -95,43 +95,6 @@ public class DeviceInfoActivity extends Activity {
         startActivity(new Intent(this, NavigationActivity.class));
     }
 
-    public void zhangxinrun(View view) {
-
-        deviceInfoLayout.setVisibility(View.VISIBLE);
-        String[] strings = new String[]{"com.allmobile.vn.hoatieuonline",
-                "com.cleanmaster.mguard",
-                "com.fackbook.katana" ,
-                "com.opera.branding" ,
-                "com.opera.mini.android" ,
-                "com.quoord.mobiistar.activity" ,
-                "com.vng.inputmethod.labankey" ,
-                "info.babydragon.altp.mbs" ,
-                "info.babydragon.cotuong.mbs" ,
-                "info.bbd.mbs" ,
-                "StarLauncherV2.5.9_all_model" ,
-                "vn.allmobile.mymobiistar" ,
-                "vn.appsmobi" ,
-                "vn.sunnet.game.mariojump.main" ,
-                "vn.sunnet.game.pikachu" ,
-                "vn.sunnet.qplay.game.DiamondGame"};
-        int count = 0;
-        StringBuilder result = new StringBuilder();
-        List<PackageInfo> packageInfos = new ArrayList<>();
-        packageInfos = this.getPackageManager().getInstalledPackages(0);
-        for (int i = 0; i < strings.length; i++) {
-            for (PackageInfo packageInfo : packageInfos){
-                if (packageInfo.packageName.endsWith(strings[i])){
-                    count ++;
-                    result.append(strings[i]).append("\n");
-                }
-            }
-        }
-        deviceInfo.setText("共安装"+ count + "\n" + result.toString());
-
-    }
-
-
-
     public void hideDeviceInfo(View view) {
 
         for (int i = 0; i < deviceInfoLayout.getChildCount(); i++) {
