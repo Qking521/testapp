@@ -9,6 +9,7 @@
     <string name="start_button">start navigation</string>
     <string name="btn_screen_shot">screen shot</string>
     <string name="btn_device_info">device info</string>
+    <string name="btn_storage_info">storage info</string>
     <string name="btn_apps_info">apps info</string>
     <string name="btn_file_manager">file manager</string>
 

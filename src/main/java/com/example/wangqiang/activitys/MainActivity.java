@@ -40,27 +40,6 @@ public class MainActivity extends Activity {
 
         init();
         initViews();
-        StorageManager manager = (StorageManager)getSystemService(Context.STORAGE_SERVICE);
-        try {
-            Class<?>[] paramClasses = {};
-            Method getVolumePaths = manager.getClass().getMethod("getVolumePaths", paramClasses);
-            getVolumePaths.setAccessible(true);
-            Object obj = getVolumePaths.invoke(manager, new Object[]{});
-            String[] path = (String[])obj;
-                for (int i = 0; i < path.length; i++) {
-                    Log.v("wq", "path ="+ path[i]);
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-            Log.v("wq", "NoSuchMethodException");
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-            Log.v("wq", "InvocationTargetException");
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            Log.v("wq", "IllegalAccessException");
-        }
-
     }
 
     private void initViews() {

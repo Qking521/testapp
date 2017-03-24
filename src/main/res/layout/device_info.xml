@@ -32,6 +32,12 @@
             android:layout_height="wrap_content"
             android:onClick="deviceInfo"
             android:text="@string/btn_device_info"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="storageInfo"
+            android:text="@string/btn_storage_info"/>
       
     </LinearLayout>
 

@@ -10,6 +10,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.text.SpannableStringBuilder;
@@ -36,6 +39,8 @@ import com.mediatek.telephony.TelephonyManagerEx;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.Manifest;
@@ -58,9 +63,6 @@ public class DeviceInfoActivity extends Activity {
     private ImageView mInfoShowImage;
     private ListView mInfoShowListView;
     private TelephonyManagerEx mTelephonyManagerEx;
-
-
-
 
     private int mStatusBarHeight = 0;
 
@@ -110,11 +112,71 @@ public class DeviceInfoActivity extends Activity {
         deviceInfoLayout.setVisibility(View.GONE);
     }
 
+    public void storageInfo(View view) {
+        if (!PermissionCheck.isPermissionGranted(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+            PermissionCheck.requsetPermission(this,
+                    new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PermissionCheck.PERMISSION_REQUSTCODE_STORAGE);
+        }else {
+            storageInfo();
+        }
+    }
+
+    /**
+     * now the external path have emulated indicate that the external storage is a part of internal storage
+     * if a phone have 16 GB size, that is internal storage size.
+     * 4 GB used to system contain system image and so on
+     * the left is external storage but it's emulated by internal storage
+     *
+     */
+    private void storageInfo() {
+        deviceInfoLayout.setVisibility(View.VISIBLE);
+        StringBuilder sb = new StringBuilder();
+        StorageManager manager = (StorageManager)getSystemService(Context.STORAGE_SERVICE);
+        sb.append("---------sd path------------").append(ENTER);
+        try {
+            Class<?>[] paramClasses = {};
+            Method getVolumePaths = manager.getClass().getMethod("getVolumePaths", paramClasses);
+            getVolumePaths.setAccessible(true);
+            Object obj = getVolumePaths.invoke(manager, new Object[]{});
+            String[] path = (String[])obj;
+            for (int i = 0; i < path.length; i++) {
+                sb.append(path[i]).append(ENTER);
+            }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            Log.v("wq", "NoSuchMethodException");
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            Log.v("wq", "InvocationTargetException");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            Log.v("wq", "IllegalAccessException");
+        }
+
+        sb.append("---------------Environment------------------").append(ENTER)
+          .append("getDataDirectory: ").append(Environment.getDataDirectory().getAbsolutePath()).append(ENTER)
+          .append("getDownloadCacheDirectory: ").append(Environment.getDownloadCacheDirectory().getAbsolutePath()).append(ENTER)
+          .append("getExternalStorageDirectory: ").append(Environment.getExternalStorageDirectory().getPath()).append(ENTER)
+          .append("getRootDirectory: ").append(Environment.getRootDirectory().getAbsolutePath()).append(ENTER)
+          .append("isExternalStorageEmulated： ").append(String.valueOf(Environment.isExternalStorageEmulated())).append(ENTER);
+        sb.append("---------------application------------------").append(ENTER)
+          .append("getExternalCacheDir: ").append(getExternalCacheDir().getAbsolutePath()).append(ENTER)
+          .append("getFilesDir: ").append(getFilesDir().getAbsolutePath()).append(ENTER)
+          .append("getCacheDir: ").append(getCacheDir().getAbsolutePath()).append(ENTER)
+          .append("getDataDir: ").append(getDataDir().getAbsolutePath()).append(ENTER)
+          .append("getObbDir: ").append(getObbDir().getAbsolutePath()).append(ENTER)
+          .append("getCodeCacheDir: ").append(getCodeCacheDir().getAbsolutePath()).append(ENTER)
+          .append("getExternalCacheDir: ").append(getExternalCacheDir().getAbsolutePath()).append(ENTER)
+          .append("getNoBackupFilesDir: ").append(getNoBackupFilesDir().getAbsolutePath());
+        deviceInfo.setText(sb);
+    }
+
     public void deviceInfo(View view) {
         if (!PermissionCheck.isPermissionGranted(this, android.Manifest.permission.READ_PHONE_STATE)){
             PermissionCheck.requsetPermission(this,
                     new String[]{android.Manifest.permission.READ_PHONE_STATE},
-                    PermissionCheck.PERMISSION_REQUSTCODE_MULTI_PERMISSION);
+                    PermissionCheck.PERMISSION_REQUSTCODE_PHONE);
         }else {
             deviceInfo();
         }
@@ -129,6 +191,7 @@ public class DeviceInfoActivity extends Activity {
         propertyInfo(sb);
 
         SpannableStringBuilder ssb = new SpannableStringBuilder(sb.toString());
+        //high light text
         highLightString(ssb, sb.toString(), highLightedStrings);
         deviceInfo.setText(ssb);
     }
@@ -162,11 +225,6 @@ public class DeviceInfoActivity extends Activity {
             ssb.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
-
-
-
-
-
 
     private void telephonyInfo(StringBuilder sb) {
         TelephonyManager tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
@@ -202,11 +260,21 @@ public class DeviceInfoActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.v("wq", "onRequestPermissionsResult requestCode=" + requestCode + " permissioins=" + permissions[0]);
         PermissionCheck.onRequestPermissionResultCallback(requestCode, permissions, grantResults);
-        if (PermissionCheck.RESULT_REQUSTCODE_PHONE){
-            deviceInfo();
-        }else {
-            PermissionCheck.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_PHONE_STATE, getString(R.string.permission_rational_message));
+        if (requestCode == PermissionCheck.PERMISSION_REQUSTCODE_PHONE) {
+            if (PermissionCheck.RESULT_REQUSTCODE_PHONE) {
+                deviceInfo();
+            } else {
+                PermissionCheck.shouldShowRequestPermissionRationale(this, permissions[0], getString(R.string.permission_rational_message));
+            }
+        }
+        if (requestCode == PermissionCheck.PERMISSION_REQUSTCODE_STORAGE) {
+            if (PermissionCheck.RESULT_REQUSTCODE_STORAGE) {
+                storageInfo();
+            } else {
+                PermissionCheck.shouldShowRequestPermissionRationale(this, permissions[0], getString(R.string.permission_rational_message));
+            }
         }
     }
 
