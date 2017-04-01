@@ -120,7 +120,7 @@ public class AppsManager extends Activity {
                 holderView.frontLayout = (RelativeLayout)convertView.findViewById(R.id.info_show_front_layout);
                 holderView.icon = (ImageView) convertView.findViewById(R.id.icon);
                 holderView.className = (TextView)convertView.findViewById(R.id.app_name);
-                holderView.frontLayout.setOnTouchListener(new MyOnTouchListener());
+//                holderView.frontLayout.setOnTouchListener(new MyOnTouchListener());
                 convertView.setTag(holderView);
             } else {
                 holderView = (HolderView) convertView.getTag();

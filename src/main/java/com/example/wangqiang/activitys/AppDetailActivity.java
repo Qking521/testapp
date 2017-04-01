@@ -10,6 +10,7 @@ import android.content.pm.PermissionInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wangqiang.app.R;
@@ -37,14 +38,30 @@ public class AppDetailActivity extends Activity {
 
         mUsage.setText(getUsage());
         mPermisssion.setText(getPermissin());
-        mPermisssion.setOnClickListener(new MyOnClickListener("permission", getPermissin()));
 
     }
 
     private String getUsage() {
-        ApplicationInfo applicationInfo = new ApplicationInfo();
+        ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = mPackageManager.getApplicationInfo(mPackageName, PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("backupAgentName: ").append(applicationInfo.backupAgentName).append("\n")
+                .append("className: ").append(applicationInfo.className).append("\n")
+                .append("dataDir: ").append(applicationInfo.dataDir).append("\n")
+                .append("deviceProtectedDataDir: ").append(applicationInfo.deviceProtectedDataDir).append("\n")
+                .append("manageSpaceActivityName: ").append(applicationInfo.manageSpaceActivityName).append("\n")
+                .append("permission: ").append(applicationInfo.permission).append("\n")
+                .append("nativeLibraryDir: ").append(applicationInfo.nativeLibraryDir).append("\n")
+                .append("processName: ").append(applicationInfo.processName).append("\n")
+                .append("publicSourceDir: ").append(applicationInfo.publicSourceDir).append("\n")
+                .append("sourceDir: ").append(applicationInfo.sourceDir).append("\n")
+                .append("taskAffinity: ").append(applicationInfo.taskAffinity).append("\n");
 
-        return null;
+        return sb.toString();
     }
 
     private String getPermissin() {
@@ -60,8 +77,8 @@ public class AppDetailActivity extends Activity {
             for (int i = 0; i < permissions.length; i++) {
                 try{
                     PermissionInfo permInfo = mPackageManager.getPermissionInfo(permissions[i], 0);
-                    sb.append(permissions[i]).append("\n").
-                            append(permInfo.loadLabel(mPackageManager).toString()).append("\n");
+                    sb.append(permissions[i]).append("\n")
+                      .append(permInfo.loadLabel(mPackageManager).toString()).append("\n");
                 }catch (Exception e){}
             }
         }
@@ -71,30 +88,6 @@ public class AppDetailActivity extends Activity {
     private void initViews() {
         mPermisssion = (TextView)findViewById(R.id.app_detail_permission);
         mUsage = (TextView)findViewById(R.id.app_detail_usage);
-    }
-
-    class  MyOnClickListener implements View.OnClickListener{
-
-        String title;
-        String summary;
-        int count = 0;
-        public MyOnClickListener(String title, String summary){
-            this.title = title;
-            this.summary = summary;
-        }
-
-        @Override
-        public void onClick(View v) {
-            count += 1;
-            if (v instanceof TextView){
-                if (count % 2 == 0){
-                    ((TextView) v).setText(summary);
-                }else {
-                    ((TextView) v).setText(title);
-                }
-            }
-
-        }
     }
 
 }
