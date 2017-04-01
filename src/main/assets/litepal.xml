@@ -35,6 +35,7 @@
     	</list>
     -->
     <list>
+        <mapping class="com.example.wangqiang.data.Person" />
     </list>
 
     <!--

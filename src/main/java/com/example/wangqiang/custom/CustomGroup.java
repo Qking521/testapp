@@ -10,7 +10,6 @@ import android.view.ViewGroup;
  * Created by wangqiang on 2015/9/18.
  */
 public class CustomGroup extends ViewGroup {
-    ObjectAnimator
     public static final String TAG = "wq";
     private Context mContext;
     public CustomGroup(Context context, AttributeSet attrs) {

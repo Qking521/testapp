@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wangqiang.app" >
+    package="com.example.wangqiang.app">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!-- torch -->
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera2" />
-    <uses-feature android:name="android.hardware.autofocus"/>
-
-
+    <uses-feature android:name="android.hardware.autofocus" />
 
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.example.wangqiang.activitys.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="com.example.wangqiang.nav.NavigationActivity" />
         <activity android:name="com.example.wangqiang.activitys.AppsManager" />
         <activity android:name="com.example.wangqiang.activitys.FileManager" />
-        <activity android:name="com.example.wangqiang.activitys.CameraActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
+        <activity
+            android:name="com.example.wangqiang.activitys.CameraActivity"
+            android:configChanges="orientation|screenSize"></activity>
         <activity android:name="com.example.wangqiang.activitys.DeviceInfoActivity" />
         <activity android:name="com.example.wangqiang.activitys.AppDetailActivity" />
 
-
         <service android:name="com.example.wangqiang.services.FloatViewService" />
 
-        <receiver android:name="com.example.wangqiang.receivers.BootReceiver" >
+        <receiver android:name="com.example.wangqiang.receivers.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name="com.example.wangqiang.activitys.LitepalActivity"
+            android:label="@string/main_data_litepal"></activity>
     </application>
 
 </manifest>
