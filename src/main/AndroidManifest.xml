@@ -34,7 +34,7 @@
         <activity android:name="com.example.wangqiang.activitys.FileManager" />
         <activity
             android:name="com.example.wangqiang.activitys.CameraActivity"
-            android:configChanges="orientation|screenSize"></activity>
+            android:configChanges="orientation|screenSize" />
         <activity android:name="com.example.wangqiang.activitys.DeviceInfoActivity" />
         <activity android:name="com.example.wangqiang.activitys.AppDetailActivity" />
 
@@ -48,7 +48,10 @@
 
         <activity
             android:name="com.example.wangqiang.activitys.LitepalActivity"
-            android:label="@string/main_data_litepal"></activity>
+            android:label="@string/main_data_litepal" />
+        <activity
+            android:name="com.example.wangqiang.activitys.MaterailDesignActivity"
+            android:label="@string/title_activity_materail_design"></activity>
     </application>
 
 </manifest>
