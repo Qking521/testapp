@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
         mMainListData.put(getString(R.string.main_data_app_manager), AppsManager.class);
         mMainListData.put(getString(R.string.main_data_device_info), DeviceInfoActivity.class);
         mMainListData.put(getString(R.string.main_data_litepal), LitepalActivity.class);
+        mMainListData.put(getString(R.string.main_data_material_design), MaterialDesignActivity.class);
 
     }
 

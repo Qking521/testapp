@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/selection1"
+        android:icon="@drawable/icon"
+        android:title="selection1"/>
+
+    <group >
+        <item
+            android:title="@string/app_name"
+            android:icon="@drawable/icon"
+            android:id="@+id/selection2"></item>
+
+        <item
+            android:title="@string/action_settings"
+            android:icon="@drawable/icon"
+            android:id="@+id/selection3"></item>
+    </group>
+
+</menu>

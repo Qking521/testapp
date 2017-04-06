@@ -19,6 +19,7 @@
     <string name="main_data_app_manager">App Manager</string>
     <string name="main_data_device_info">Device Info</string>
     <string name="main_data_litepal">Database</string>
+    <string name="main_data_material_design">Material Design</string>
 
     <string name="permission_rational_title">Permission Rationale</string>
     <string name="permission_rational_message">"It's must"</string>
